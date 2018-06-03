@@ -1393,6 +1393,26 @@ Objective-C:
 }
 ```
 
+Example of `wrap` to `URLSession` as extension
+
+Swift:
+
+```swift
+extension URLSession {
+    func dataTaskPromise(with: URLRequest) -> Promise<(Data?, URLResponse?)> {
+        return wrap { handler in
+            self.dataTask(with: with, completionHandler: handler).resume()
+        }
+    }
+}
+```
+
+Objective-C:
+
+```objectivec
+(TODO)
+```
+
 ## Advanced topics
 
 ### Default dispatch queue
